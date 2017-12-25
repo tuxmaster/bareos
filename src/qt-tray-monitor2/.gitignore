@@ -1,0 +1,6 @@
+tmp
+Makefile
+.qmake.stash
+bin
+translations/*.qm
+*.pro.user

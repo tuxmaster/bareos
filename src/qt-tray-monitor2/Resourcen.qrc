@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/os_bar">
+        <file alias="ok.png">../images/bareos_1.png</file>
+    </qresource>
+</RCC>
