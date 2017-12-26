@@ -32,6 +32,8 @@ int main(int argc, char *argv[])
 {
 	QApplication app(argc, argv);
 
+	app.setApplicationName("qt-tray-monitor");
+
 	QTranslator QtTranslation;
 	QTranslator AppTranslation;
 
@@ -42,15 +44,14 @@ int main(int argc, char *argv[])
 	AppTranslationPath="./";
 #endif
 
-	QtTranslation.load(QString("qt_%1").arg(QLocale::system().name()),QtTranslationPath);
-	AppTranslation.load(QString("%1_%2").arg(app.applicationName().toLower()).arg(QLocale::system().name()),AppTranslationPath);
+	QtTranslation.load(QLocale(),"qt","_",QtTranslationPath);
+	AppTranslation.load(QLocale(),app.applicationName().toLower(),"_",QtTranslationPath);
 
 	if((!AppTranslation.isEmpty()) && (!QtTranslation.isEmpty()))
 	{
 		app.installTranslator(&QtTranslation);
 		app.installTranslator(&AppTranslation);
 	}
-
 
 	MainWindow w;
 #ifndef Q_OS_WIN
